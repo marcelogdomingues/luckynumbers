@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/multipleLuckyNumbers.js"></script>
+    <link rel="stylesheet" href="/css/luckynumbers.css" />
+    <link
+            href="https://fonts.googleapis.com/css?family=Lobster"
+            rel="stylesheet"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Multiple Lucky Numbers</title>
+</head>
+<body>
+<div id="slot-machine">
+    <div id="status" th:class="${slotMachine.won} ? 'won' : ''">
+        <span th:if="${slotMachine.result == null}">No results yet...</span>
+        <span
+                th:if="${slotMachine.result != null}"
+                th:text="${slotMachine.won} ? 'You Won!' : 'You Lose!'"
+        ></span>
+    </div>
+
+    <div id="title">
+        <img src="/img/trevo.svg" alt="trevo" />
+        <span>Lucky Numbers</span>
+        <img src="/img/trevo.svg" alt="trevo" />
+    </div>
+    <div id="numbers">
+        <div id="first" class="number">
+            <img
+                    src="/img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(0)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="second" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(1)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="third" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(2)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+    </div>
+
+    <div id="numbers">
+        <div id="fourth" class="number">
+            <img
+                    src="/img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(3)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="fifth" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(4)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="six" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(5)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+    </div>
+
+    <div id="numbers">
+        <div id="seven" class="number">
+            <img
+                    src="/img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(6)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="eight" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(7)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+        <div id="nine" class="number">
+            <img
+                    src="./img/stars/star.svg"
+                    th:src="${slotMachine.result != null} ? '/img/stars/star-' + ${slotMachine.result.get(8)} + '.svg' : '/img/stars/star.svg'"
+                    alt="star"
+            />
+        </div>
+    </div>
+
+    <div id="controls">
+        <button
+                id="coin"
+                th:disabled="${slotMachine.coins} == 5"
+                th:onclick="insertCoin([[${slotMachine.machineName}]])"
+        >
+            <div>Insert&nbsp;<span #id="available-coins">1</span>&nbsp;coin</div>
+            <div id="coin-socket"></div>
+            <div>
+            <span
+                    id="credits"
+                    th:text="${slotMachine.coins} > 0 ? ${slotMachine.coins} + ' coins inserted' : '&nbsp;'"
+            ></span>
+            </div>
+        </button>
+        <div id="play" title="Click to play">
+            <button
+                    th:disabled="${slotMachine.coins} == 0"
+                    th:onclick="play([[${slotMachine.machineName}]])"
+            >
+                Play
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

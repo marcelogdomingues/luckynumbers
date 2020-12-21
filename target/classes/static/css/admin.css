@@ -1,0 +1,13 @@
+*{
+    align-content: center;
+}
+
+h1{
+    text-align: center;
+    margin: 2% 0;
+    border: 2px solid red;
+}
+
+#table{
+    width: 50%;
+}

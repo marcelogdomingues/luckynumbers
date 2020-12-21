@@ -1,0 +1,232 @@
+:root {
+  --margin: 2vw;
+  --height: auto;
+  --width: 50vw;
+  --grid-padding: 1vw;
+  --grid-border-color: #888;
+}
+
+@keyframes blinker {
+  50% {
+    background: red;
+  }
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: grey;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+#slot-machine {
+  --lucky-grid-width: calc(var(--width) - 2 * var(--margin));
+  --lucky-grid-height: calc(var(--height) - 2 * var(--margin));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: var(--lucky-grid-width);
+  height: var(--lucky-grid-height);
+  background: #ffffffdd;
+  border: 2px solid #333;
+  border-radius: 2vw;
+  overflow: hidden;
+  box-shadow: 0 0 20px -5px;
+}
+
+#status {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 1px solid var(--grid-border-color);
+  background: #ddd;
+}
+
+#status span {
+  font-size: calc(7vw - 2 * var(--margin));
+  text-align: center;
+  padding: 0.5em;
+  width: 100%;
+}
+
+#status.won span {
+  background: green;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: blinker 300ms linear infinite;
+}
+
+#title {
+  font-family: Lobster;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap;
+  font-size: calc(6.8vw - 2 * var(--margin));
+  padding: 0.5em 2em;
+  color: red;
+  border-bottom: 1px solid var(--grid-border-color);
+}
+
+#title img {
+  width: 4vw;
+  height: auto;
+  margin: 0 0.5em;
+}
+
+#numbers {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--grid-border-color);
+}
+
+#numbers img {
+  width: 10vw;
+  height: auto;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.7));
+}
+
+#numbers .number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding: 0.8em 0;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+#numbers .number:not(:last-child) {
+  border-right: 1px solid var(--grid-border-color);
+}
+
+#numbers .number:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#coin div:last-child {
+  font-size: 1.5vw;
+}
+
+#coin-socket {
+  display: block;
+  height: 2vw;
+  width: 16vw;
+  background-color: grey;
+  border: 0.4vw solid #333;
+  border-radius: 2vw;
+  margin: 0.3em;
+  box-shadow: inset 0 2px 3px 0px;
+}
+
+#coin,
+#play {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3vw 0;
+  font-size: 3vw;
+  transition: all 300ms ease-in-out;
+}
+
+#coin,
+#coin:focus {
+  cursor: url(../img/euro.png), auto;
+  border: none;
+  outline: none;
+  border-right: 1px solid var(--grid-border-color);
+}
+
+#coin:hover #coin-socket {
+  background: rgb(198, 198, 198);
+}
+
+#coin:active #coin-socket {
+  background: white;
+  transition: none;
+}
+
+#coin[disabled] {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: not-allowed;
+  border: none;
+  border-right: 1px solid var(--grid-border-color);
+}
+
+#coin[disabled] #coin-socket {
+  opacity: 0.5;
+  box-shadow: none;
+  background-color: grey;
+}
+
+#play button {
+  cursor: pointer;
+  outline: none;
+  border: 0.4vw solid darkred;
+  width: 15vw;
+  height: 9vw;
+  border-radius: 2vw;
+  font-size: 4vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: darkred;
+  background: red;
+  text-shadow: 0 0 1px #524f4f;
+  transition: all 300ms ease-in-out;
+}
+
+#play button:hover {
+  cursor: pointer;
+  background: darkred;
+  font-size: 4.5vw;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+  text-shadow: 0 0 5px #524f4f;
+}
+
+#play button:active {
+  background: red;
+  border-color: darkred;
+  color: white;
+  text-shadow: 0 0 5px #524f4f;
+  transition: none;
+}
+
+#play button[disabled] {
+  filter: grayscale(1) opacity(0.4) brightness(3);
+  cursor: not-allowed;
+  transition: none;
+  text-shadow: none;
+  color: darkred;
+  background: red;
+  border: none;
+  font-size: 4vw;
+}

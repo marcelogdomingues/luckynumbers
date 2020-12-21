@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 467.66 467.66">
+<g>
+  <path
+    id="star-path"
+    fill="#7f7f7f"
+    stroke="black"
+    stroke-width="3"
+    d="M233.83 0l67.22 117.39 135.28-.48-68.05 116.92 68.05 116.91-135.28-.48-67.22 117.4-67.23-117.4-135.272.48 68.053-116.91-68.053-116.92 135.272.48z"
+  />
+  <text x="190" y="280" font-family="Arial" font-size="150" font-weight="bold" fill="#222">7</text>
+</g>
+</svg>
